@@ -1,0 +1,29 @@
+name: .NET CI
+
+on: 
+  push: 
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps: 
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.0'
+
+      - name: Restore dependencies
+        run: dotnet restore ./test_github_actions.sln
+
+      - name: Build
+        run: dotnet build ./test_github_actions.sln --configuration Release --no-restore
+
+      - name: Run tests
+        run: dotnet test ./test_github_actions.sln --no-build --verbosity normal
