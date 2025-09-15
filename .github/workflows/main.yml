@@ -21,10 +21,10 @@ jobs:
           include-prerelease: true
 
       - name: Restore dependencies
-        run: dotnet restore .././test_github_actions.sln
+        run: dotnet restore ./test-github-actions.sln
 
       - name: Build
-        run: dotnet build ./test_github_actions.sln --configuration Release --no-restore
+        run: dotnet build ./test-github-actions.sln --configuration Release --no-restore
 
       - name: Run tests
-        run: dotnet test ./test_github_actions.sln --no-build --verbosity normal
+        run: dotnet test ./test-github-actions.sln --no-build --verbosity normal
