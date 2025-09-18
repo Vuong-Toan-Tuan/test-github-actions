@@ -1,6 +1,7 @@
 ﻿FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
 USER $APP_UID
 WORKDIR /app
+ENV ASPNETCORE_URLS=http://+:5106
 EXPOSE 8088
 EXPOSE 8089
 
